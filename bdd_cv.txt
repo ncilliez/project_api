@@ -27,8 +27,8 @@ primary key (id),
 foreign key (id_fichier) references fichier(id)
 ) ENGINE=INNODB;
 
-INSERT INTO fichier VALUES (1, 'file/maPhoto.jpg');
-INSERT INTO fichier VALUES (2, 'file/icone.jpg');
+INSERT INTO fichier VALUES (1, 'http://localhost/project_api/file/maPhoto.jpg');
+INSERT INTO fichier VALUES (2, 'http://localhost/project_api/file/icone.jpg');
 
 INSERT INTO titre VALUES (1, 2,'Dev front-end');
 

@@ -1,0 +1,5 @@
+RewriteEngine On
+
+# Règle pour la page titre
+RewriteRule ^titre/?$ titre.php [NC,L]
+RewriteRule ^titre/(\d+)$ titre.php?id=$1 [NC,L]
