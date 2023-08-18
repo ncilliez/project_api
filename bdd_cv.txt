@@ -21,8 +21,19 @@ CREATE TABLE IF NOT EXISTS `profile` (
 `id` int(5) NOT NULL AUTO_INCREMENT,
 `id_fichier` int(5),
 `alt_fichier` text,
-`presentation` text,
+`nom` text,
+`naissance` text,
+`adresse` text,
+`commentaire` text,
+primary key (id),
+foreign key (id_fichier) references fichier(id)
+) ENGINE=INNODB;
+
+CREATE TABLE IF NOT EXISTS `details` (
+`id` int(5) NOT NULL AUTO_INCREMENT,
 `details` text,
+`id_fichier` int(5),
+`alt_fichier` text,
 primary key (id),
 foreign key (id_fichier) references fichier(id)
 ) ENGINE=INNODB;
@@ -32,9 +43,11 @@ INSERT INTO fichier VALUES (2, 'http://localhost/project_api/file/icone.jpg');
 
 INSERT INTO titre VALUES (1, 2,'Dev front-end');
 
-INSERT INTO profile VALUES (1, 1,'C\'est moi','Bonjour et bienvenu sur mon site. Je me pr\ésente, je m\'appel Nicolas, j\'ai 35 ans et je suis titulaire du permis B.',
-'J\'ai r\écement enm\énager \à Lille et je suis actuellement \à la recherche d\'un emploi. J\'ai \étudier dans le domaine de la gestion informatique depuis la terminal.
-J\'ai d\'abord suivi cette voie par int\ér\êt pour l\'informatique en g\én\éral\, puis je me suis finalement sp\écialis\é dans les langages de programmation web.
-Afin d\'appuyer mes candidatures aupr\ès des entreprises\, je me suis lancer dans un projet de curriculum vitae sur un format site web\, 
+INSERT INTO profile VALUES (1, 1,'C\'est moi','Nicolas Cilliez', '23/03/1988', '5 rue des vétérans à Villeneuve d\'asq 59350', 'Je suis titulaire du permis B/ non véhiculé');
+
+INSERT INTO details VALUES (1, null, null,'Bonjour et bienvenu sur mon site.');
+INSERT INTO details VALUES (2, null, null,'J\'ai r\écement enm\énager \à Lille et je suis actuellement \à la recherche d\'un emploi. J\'ai \étudier dans le domaine de la gestion informatique depuis la terminal.
+J\'ai d\'abord suivi cette voie par int\ér\êt pour l\'informatique en g\én\éral\, puis je me suis finalement sp\écialis\é dans les langages de programmation web.');
+INSERT INTO details VALUES (3, null, null,'Afin d\'appuyer mes candidatures aupr\ès des entreprises\, je me suis lancer dans un projet de curriculum vitae sur un format site web\, 
 dans le but d\'exposer mes comp\étences et d\'illustr\é mes motivations sur un support en corr\élation avec mon domaine d\'activit\é. 
 Il m\'as \également permis de mettre en pratique et d\'am\élior\é \à la fois en nombre et en qualit\é mes capacit\és en tant qu\'int\égrateur web.');
