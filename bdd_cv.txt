@@ -24,6 +24,8 @@ CREATE TABLE IF NOT EXISTS `profile` (
 `nom` text,
 `naissance` text,
 `adresse` text,
+`mail` text,
+`lien` text,
 `commentaire` text,
 primary key (id),
 foreign key (id_fichier) references fichier(id)
@@ -38,12 +40,12 @@ primary key (id),
 foreign key (id_fichier) references fichier(id)
 ) ENGINE=INNODB;
 
-INSERT INTO fichier VALUES (1, 'http://localhost/project_api/file/maPhoto.jpg');
-INSERT INTO fichier VALUES (2, 'http://localhost/project_api/file/icone.jpg');
+INSERT INTO fichier VALUES (1, 'http://localhost/project_api/file/cilliez_nicolas.jpg');
+INSERT INTO fichier VALUES (2, 'http://localhost/project_api/file/logo.png');
 
 INSERT INTO titre VALUES (1, 2,'Dev front-end');
 
-INSERT INTO profile VALUES (1, 1,'C\'est moi','Nicolas Cilliez', '23/03/1988', '5 rue des vétérans à Villeneuve d\'asq 59350', 'Je suis titulaire du permis B/ non véhiculé');
+INSERT INTO profile VALUES (1, 1,'C\'est moi','Nicolas Cilliez', '23/03/1988', '5 rue des vétérans à Villeneuve d\'asq 59350','ncilliez@gmail.com','https://github.com/ncilliez', 'Je suis titulaire du permis B/ non véhiculé');
 
 INSERT INTO details VALUES (1, null, null,'Bonjour et bienvenu sur mon site.');
 INSERT INTO details VALUES (2, null, null,'J\'ai r\écement enm\énager \à Lille et je suis actuellement \à la recherche d\'un emploi. J\'ai \étudier dans le domaine de la gestion informatique depuis la terminal.
