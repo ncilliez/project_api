@@ -3,3 +3,7 @@ RewriteEngine On
 # Règle pour la page titre
 RewriteRule ^titre/?$ titre.php [NC,L]
 RewriteRule ^titre/(\d+)$ titre.php?id=$1 [NC,L]
+
+# Règle pour la page profile
+RewriteRule ^profile/?$ profile.php [NC,L]
+RewriteRule ^profile/(\d+)$ profile.php?id=$1 [NC,L]
