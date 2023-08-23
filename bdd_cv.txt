@@ -32,9 +32,9 @@ foreign key (id_fichier) references fichier(id)
 
 CREATE TABLE IF NOT EXISTS `details` (
 `id` int(5) NOT NULL AUTO_INCREMENT,
-`details` text,
-`id_fichier` int(5),
 `alt_fichier` text,
+`id_fichier` int(5),
+`details` text,
 primary key (id),
 foreign key (id_fichier) references fichier(id)
 ) ENGINE=INNODB;

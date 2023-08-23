@@ -7,3 +7,7 @@ RewriteRule ^titre/(\d+)$ titre.php?id=$1 [NC,L]
 # Règle pour la page profile
 RewriteRule ^profile/?$ profile.php [NC,L]
 RewriteRule ^profile/(\d+)$ profile.php?id=$1 [NC,L]
+
+# Règle pour la page details
+RewriteRule ^details/?$ details.php [NC,L]
+RewriteRule ^details/(\d+)$ details.php?id=$1 [NC,L]
