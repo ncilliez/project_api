@@ -39,8 +39,32 @@ primary key (id),
 foreign key (id_fichier) references fichier(id)
 ) ENGINE=INNODB;
 
+CREATE TABLE IF NOT EXISTS `categories` (
+`id` int(5) NOT NULL AUTO_INCREMENT,
+`libelle` varchar(256) NOT NULL,
+primary key (id)
+) ENGINE=INNODB;
+
+CREATE TABLE IF NOT EXISTS `competences` (
+`id` int(5) NOT NULL AUTO_INCREMENT,
+`id_fichier` int(5),
+`id_categorie` int(5),
+`sous_categorie` text,
+`details` text,
+primary key (id),
+foreign key (id_categorie) references categories(id),
+foreign key (id_fichier) references fichier(id)
+) ENGINE=INNODB;
+
 INSERT INTO fichier VALUES (1, 'http://localhost/project_api/file/cilliez_nicolas.jpg');
 INSERT INTO fichier VALUES (2, 'http://localhost/project_api/file/logo.png');
+INSERT INTO fichier VALUES (3, 'http://localhost/project_api/file/html5.png');
+INSERT INTO fichier VALUES (4, 'http://localhost/project_api/file/css-3.png');
+INSERT INTO fichier VALUES (5, 'http://localhost/project_api/file/react.png');
+INSERT INTO fichier VALUES (6, 'http://localhost/project_api/file/sql.png');
+INSERT INTO fichier VALUES (7, 'http://localhost/project_api/file/php.png');
+INSERT INTO fichier VALUES (8, 'http://localhost/project_api/file/synfony.png');
+INSERT INTO fichier VALUES (9, 'http://localhost/project_api/file/reseau.png');
 
 INSERT INTO titre VALUES (1, 2,'Dev front-end');
 
@@ -52,3 +76,17 @@ J\'ai d\'abord suivi cette voie par int\ér\êt pour l\'informatique en g\én\é
 INSERT INTO details VALUES (3, null, null,'Afin d\'appuyer mes candidatures aupr\ès des entreprises\, je me suis lancer dans un projet de curriculum vitae sur un format site web\, 
 dans le but d\'exposer mes comp\étences et d\'illustr\é mes motivations sur un support en corr\élation avec mon domaine d\'activit\é. 
 Il m\'as \également permis de mettre en pratique et d\'am\élior\é \à la fois en nombre et en qualit\é mes capacit\és en tant qu\'int\égrateur web.');
+
+INSERT INTO categories VALUES (1, 'informatique');
+INSERT INTO categories VALUES (2, 'restauration');
+INSERT INTO categories VALUES (3, 'manutention');
+
+INSERT INTO competences VALUES (1, 3, 1, 'HTML5','Développer des interfaces web statiques avec HTML5');
+INSERT INTO competences VALUES (2, 4, 1, 'CSS3','Développer des interfaces web statiques avec CSS3');
+INSERT INTO competences VALUES (3, 5, 1, 'JAVASCRIPT','Développer des interfaces web statiques avec react');
+INSERT INTO competences VALUES (4, 6, 1, 'SQL','Modéliser les données en utilisant une méthode adéquate');
+INSERT INTO competences VALUES (5, 6, 1, 'SQL','Créer une base de données relationnelle ou en adapter une existante');
+INSERT INTO competences VALUES (6, 6, 1, 'SQL','Manipuler des données en réalisant des requêtes');
+INSERT INTO competences VALUES (7, 7, 1, 'PHP','Développement et traitement des donnée (api)');
+INSERT INTO competences VALUES (8, 8, 1, 'PHP','Développement d\'api en synfony avec le bundle api_platform');
+INSERT INTO competences VALUES (9, 9, 1, 'Réseau',' Configuration IP');
