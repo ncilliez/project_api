@@ -56,6 +56,13 @@ foreign key (id_categorie) references categories(id),
 foreign key (id_fichier) references fichier(id)
 ) ENGINE=INNODB;
 
+CREATE TABLE IF NOT EXISTS `cv_table` (
+`id` int(5) NOT NULL AUTO_INCREMENT,
+`id_fichier` int(5) NOT NULL,
+primary key (id),
+foreign key (id_fichier) references fichier(id)
+) ENGINE=INNODB;
+
 INSERT INTO fichier VALUES (1, 'http://localhost/project_api/file/cilliez_nicolas.jpg');
 INSERT INTO fichier VALUES (2, 'http://localhost/project_api/file/logo.png');
 INSERT INTO fichier VALUES (3, 'http://localhost/project_api/file/html5.png');
@@ -65,6 +72,7 @@ INSERT INTO fichier VALUES (6, 'http://localhost/project_api/file/sql.png');
 INSERT INTO fichier VALUES (7, 'http://localhost/project_api/file/php.png');
 INSERT INTO fichier VALUES (8, 'http://localhost/project_api/file/synfony.png');
 INSERT INTO fichier VALUES (9, 'http://localhost/project_api/file/reseau.png');
+INSERT INTO fichier VALUES (10, 'http://localhost/project_api/file/Cilliez Nicolas CV.pdf');
 
 INSERT INTO titre VALUES (1, 2,'Dev front-end');
 
@@ -90,3 +98,5 @@ INSERT INTO competences VALUES (6, 6, 1, 'SQL','Manipuler des données en réali
 INSERT INTO competences VALUES (7, 7, 1, 'PHP','Développement et traitement des donnée (api)');
 INSERT INTO competences VALUES (8, 8, 1, 'PHP','Développement d\'api en synfony avec le bundle api_platform');
 INSERT INTO competences VALUES (9, 9, 1, 'Réseau',' Configuration IP');
+
+INSERT INTO cv_table VALUES (1,10)

@@ -11,3 +11,15 @@ RewriteRule ^profile/(\d+)$ profile.php?id=$1 [NC,L]
 # Règle pour la page details
 RewriteRule ^details/?$ details.php [NC,L]
 RewriteRule ^details/(\d+)$ details.php?id=$1 [NC,L]
+
+# Règle pour la page categories
+RewriteRule ^categories/?$ categories.php [NC,L]
+RewriteRule ^categories/(\d+)$ categories.php?id=$1 [NC,L]
+
+# Règle pour la page competences
+RewriteRule ^competences/?$ competences.php [NC,L]
+RewriteRule ^competences/(\d+)$ competences.php?id=$1 [NC,L]
+
+# Règle pour la page cv
+RewriteRule ^cv/?$ cv.php [NC,L]
+RewriteRule ^cv/(\d+)$ cv.php?id=$1 [NC,L]
