@@ -24,14 +24,23 @@
 
     function getCategories($id = null){
         $conn = getConnexion();
+        $search = isset($_GET["search"]) ? $_GET["search"] : null;
+
         if ($id === null) {
             $query = "SELECT * FROM categories";
+            if ($search !== null) {
+                $query .= " WHERE libelle LIKE '%' :search '%'";
+            }
         } else {   
             $query = "SELECT * FROM categories WHERE id = :id";
         }
+
         $stmt = $conn->prepare($query);
         if (isset($id)) {
             $stmt->bindParam(':id', $id);
+        }
+        if ($search !== null) {
+            $stmt->bindParam(':search', $search);
         }
         $stmt->execute();
         $response = $stmt->fetchAll(PDO::FETCH_ASSOC);
