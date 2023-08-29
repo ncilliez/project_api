@@ -26,13 +26,14 @@
         $conn = getConnexion();
         $search = isset($_GET["search"]) ? $_GET["search"] : null;
 
-        if ($id === null) {
-            $query = "SELECT * FROM categories";
+        $query = "SELECT * FROM categories";
+
+        if ($id === null) {  
             if ($search !== null) {
                 $query .= " WHERE libelle LIKE '%' :search '%'";
             }
         } else {   
-            $query = "SELECT * FROM categories WHERE id = :id";
+            $query .= " WHERE id = :id";
         }
 
         $stmt = $conn->prepare($query);

@@ -22,72 +22,71 @@
         break;
     }
 
-    function getCompetences($id = null){
+    function getCompetences($id = null) {
         $conn = getConnexion();
-        if(isset($_GET['items'])){
-            $items = $_GET['items'];
-        }else{
-            $items = 5;
-        }
-        if(isset($_GET['page'])){
-            $page = ($_GET['page']-1)*$items;;
-        }else{
-            $page = 0;
-        }
+        $search = isset($_GET["search"]) ? $_GET["search"] : null;
+    
+        $items = isset($_GET['items']) ? max(1, intval($_GET['items'])) : 5;
+        $page = isset($_GET['page']) ? max(0, intval($_GET['page']) - 1) * $items : 0;
+    
         $queryCount = "SELECT COUNT(*) AS total FROM competences";
         $stmtCount = $conn->prepare($queryCount);
         $stmtCount->execute();
         $totalCount = $stmtCount->fetch(PDO::FETCH_ASSOC)['total'];
         $stmtCount->closeCursor();
-        // Calculer le nombre maximal de pages
-        $pageMax = ceil($totalCount / $items);
-
+    
+        $query = "SELECT c.id, c.sous_categorie, c.details, f.path_fichier, ca.libelle
+                  FROM competences c
+                  INNER JOIN fichier f ON c.id_fichier = f.id
+                  INNER JOIN categories ca ON c.id_categorie = ca.id";
+    
         if ($id === null) {
-            $query = "SELECT c.id, c.sous_categorie, c.details, f.path_fichier, ca.libelle
-                      FROM competences c
-                      INNER JOIN fichier f ON c.id_fichier = f.id
-                      INNER JOIN categories ca ON c.id_categorie = ca.id
-                      LIMIT :items 
-                      OFFSET :page";
+            if ($search !== null) {
+                $query .= " WHERE sous_categorie LIKE :search OR details LIKE :search";
+            }
+            $query .= " LIMIT :items OFFSET :page";
         } else {   
-            $query = "SELECT c.id, c.sous_categorie, c.details, f.path_fichier, ca.libelle
-                      FROM competences c
-                      INNER JOIN fichier f ON c.id_fichier = f.id
-                      INNER JOIN categories ca ON c.id_categorie = ca.id 
-                      WHERE c.id = :id";
+            $query .= " WHERE c.id = :id";
         }
+        
         $stmt = $conn->prepare($query);
+    
         if (isset($id)) {
             $stmt->bindParam(':id', $id);
-        }else{
-            if (isset($items)) {
-                $stmt->bindParam(':items', $items, PDO::PARAM_INT);
-            }
-            if (isset($page)) {
-                $stmt->bindParam(':page', $page, PDO::PARAM_INT);
-            }
+        } else {
+            $stmt->bindParam(':items', $items, PDO::PARAM_INT);
+            $stmt->bindParam(':page', $page, PDO::PARAM_INT);
         }
+    
+        if ($search !== null) {
+            $searchTerm = "%" . $search . "%";
+            $stmt->bindParam(':search', $searchTerm);
+        }
+        
         $stmt->execute();
         $response = $stmt->fetchAll(PDO::FETCH_ASSOC);
         $stmt->closeCursor();
-
-        $pagination = [];
-
-        $pagination['totalpage'] = $pageMax;
-        if($page > 0){
+    
+        $pageMax = ceil($totalCount/ $items);
+        $pagination = [
+            'totalPage' => $pageMax,
+        ];
+        
+        if ($page > 0) {
             $pagination['pageprevious'] = $page / $items;
         }
-        if($page < ($pageMax - 1) * $items){
+        
+        if ($page < ($pageMax - 1) * $items) {
             $pagination['pagenext'] = ($page / $items) + 2;
         }
-
+    
         $result = [
             'data' => $response,
-            'pagination' => $pagination
+            'pagination' => $pagination,
         ];
         sendJSON($result);
     }
-
+    
     function sendJSON($result){
         header("Access-Control-Allow-origin: *");
         header("Content-Type: application/json; charset= UTF-8");
@@ -100,3 +99,4 @@
     }
     
 ?>
+
