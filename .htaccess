@@ -1,25 +1,25 @@
 RewriteEngine On
 
-# Règle pour la page titre
-RewriteRule ^titre/?$ titre.php [NC,L]
-RewriteRule ^titre/(\d+)$ titre.php?id=$1 [NC,L]
-
 # Règle pour la page profile
-RewriteRule ^profile/?$ profile.php [NC,L]
-RewriteRule ^profile/(\d+)$ profile.php?id=$1 [NC,L]
+RewriteRule ^profile/?$ entities/profile.php [NC,L]
+RewriteRule ^profile/(\d+)$ entities/profile.php?id=$1 [NC,L]
 
-# Règle pour la page details
-RewriteRule ^details/?$ details.php [NC,L]
-RewriteRule ^details/(\d+)$ details.php?id=$1 [NC,L]
+# Règle pour la page avatar
+RewriteRule ^avatar/?$ avatar.php [NC,L]
+RewriteRule ^avatar/(\d+)$ avatar.php?id=$1 [NC,L]
 
-# Règle pour la page categories
-RewriteRule ^categories/?$ categories.php [NC,L]
-RewriteRule ^categories/(\d+)$ categories.php?id=$1 [NC,L]
+# Règle pour la page cv
+RewriteRule ^cv/?$ cv.php [NC,L]
+RewriteRule ^cv/(\d+)$ cv.php?id=$1 [NC,L]
 
 # Règle pour la page competences
 RewriteRule ^competences/?$ competences.php [NC,L]
 RewriteRule ^competences/(\d+)$ competences.php?id=$1 [NC,L]
 
-# Règle pour la page cv
-RewriteRule ^cv/?$ cv.php [NC,L]
-RewriteRule ^cv/(\d+)$ cv.php?id=$1 [NC,L]
+# Règle pour la page articles_profile
+RewriteRule ^articles_profile/?$ articles_profile.php [NC,L]
+RewriteRule ^articles_profile/(\d+)$ articles_profile.php?id=$1 [NC,L]
+
+# Règle pour la page categories
+RewriteRule ^categories/?$ categories.php [NC,L]
+RewriteRule ^categories/(\d+)$ categories.php?id=$1 [NC,L]
