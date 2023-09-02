@@ -5,21 +5,21 @@ RewriteRule ^profile/?$ entities/profile.php [NC,L]
 RewriteRule ^profile/(\d+)$ entities/profile.php?id=$1 [NC,L]
 
 # Règle pour la page avatar
-RewriteRule ^avatar/?$ avatar.php [NC,L]
-RewriteRule ^avatar/(\d+)$ avatar.php?id=$1 [NC,L]
+RewriteRule ^avatar/?$ entities/avatar.php [NC,L]
+RewriteRule ^avatar/(\d+)$ entities/avatar.php?id=$1 [NC,L]
 
 # Règle pour la page cv
-RewriteRule ^cv/?$ cv.php [NC,L]
-RewriteRule ^cv/(\d+)$ cv.php?id=$1 [NC,L]
+RewriteRule ^cv/?$ entities/cv.php [NC,L]
+RewriteRule ^cv/(\d+)$ entities/cv.php?id=$1 [NC,L]
 
 # Règle pour la page competences
-RewriteRule ^competences/?$ competences.php [NC,L]
-RewriteRule ^competences/(\d+)$ competences.php?id=$1 [NC,L]
+RewriteRule ^competences/?$ entities/competences.php [NC,L]
+RewriteRule ^competences/(\d+)$ entities/competences.php?id=$1 [NC,L]
 
 # Règle pour la page articles_profile
-RewriteRule ^articles_profile/?$ articles_profile.php [NC,L]
-RewriteRule ^articles_profile/(\d+)$ articles_profile.php?id=$1 [NC,L]
+RewriteRule ^articles_profile/?$ entities/articles_profile.php [NC,L]
+RewriteRule ^articles_profile/(\d+)$ entities/articles_profile.php?id=$1 [NC,L]
 
 # Règle pour la page categories
-RewriteRule ^categories/?$ categories.php [NC,L]
-RewriteRule ^categories/(\d+)$ categories.php?id=$1 [NC,L]
+RewriteRule ^categories/?$ entities/categories.php [NC,L]
+RewriteRule ^categories/(\d+)$ entities/categories.php?id=$1 [NC,L]

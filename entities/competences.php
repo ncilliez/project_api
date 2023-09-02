@@ -84,7 +84,12 @@
             'data' => $response,
             'pagination' => $pagination,
         ];
-        sendJSON($result);
+        
+        if ($id !== null) {
+            sendJSON($response);
+        }else{
+            sendJSON($result);
+        }
     }
     
     function sendJSON($result){
