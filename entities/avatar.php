@@ -7,9 +7,9 @@
         case 'GET': 
             if (!empty($_GET["id"])) {
                 $id = intval($_GET["id"]); 
-                getProfile($id);
+                getAvatar($id);
             } else {
-                getProfile();;
+                getAvatar();;
             }        
         break;
 
@@ -22,9 +22,8 @@
         break;
     }
 
-    function getProfile($id = null){
+    function getAvatar($id = null){
         $conn = getConnexion();
-        $search = isset($_GET["search"]) ? $_GET["search"] : null;
     
         $items = isset($_GET['items']) ? max(1, intval($_GET['items'])) : 1;
         $page = isset($_GET['page']) ? max(0, intval($_GET['page']) - 1) * $items : 0;

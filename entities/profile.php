@@ -17,7 +17,7 @@
         break;
     }
 
-    function getProfile($id = null){
+    function getProfile(){
         $conn = getConnexion();
 
         $query = "SELECT *
