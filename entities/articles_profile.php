@@ -25,11 +25,9 @@
     function getArticleProfile($id = null){
         $conn = getConnexion();
 
-        $query = "SELECT a.id, p.nom, a.photo_article, a.article
-                FROM article_profile a
-                LEFT JOIN profile p ON a.id_profile = p.id";
+        $query = "SELECT * FROM article_profile";       
                 if ($id !== null) {   
-                    $query .= " WHERE a.id = :id";
+                    $query .= " WHERE id = :id";
                 }
 
         $stmt = $conn->prepare($query);

@@ -35,10 +35,9 @@
         $totalCount = $stmtCount->fetch(PDO::FETCH_ASSOC)['total'];
         $stmtCount->closeCursor();
     
-        $query = "SELECT c.id, p.nom, ca.libelle, c.sous_categorie, c.image_sous_categorie, c.details
+        $query = "SELECT c.id, c.id_profile, ca.libelle, c.sous_categorie, c.image_sous_categorie, c.details
                   FROM competences c
-                  INNER JOIN categories ca ON c.id_categorie = ca.id
-                  INNER JOIN profile p ON c.id_profile = p.id";
+                  INNER JOIN categories ca ON c.id_categorie = ca.id";
     
         if ($id === null) {
             if ($search !== null) {

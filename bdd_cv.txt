@@ -59,6 +59,23 @@ foreign key (id_profile) references profile(id),
 foreign key (id_categorie) references categories(id)
 ) ENGINE=INNODB;
 
+CREATE TABLE IF NOT EXISTS `parcours` (
+`id` int(5) NOT NULL AUTO_INCREMENT,
+`titre` text,
+`date_debut` date,
+`date_fin` date,
+`description` text,
+primary key (id)
+) ENGINE=INNODB;
+
+CREATE TABLE IF NOT EXISTS `missions` (
+`id` int(5) NOT NULL AUTO_INCREMENT,
+`id_parcours` int(5),
+`mission` text,
+primary key (id),
+foreign key (id_parcours) references parcours(id)
+) ENGINE=INNODB;
+
 INSERT INTO profile VALUES (1, 'Dev front-end','http://localhost/project_api/file/logo.png','Nicolas Cilliez', '23/03/1988', '5 rue des vétérans à Villeneuve d\'asq 59350','ncilliez@gmail.com','https://github.com/ncilliez', 'Je suis titulaire du permis B/ non véhiculé');
 
 INSERT INTO avatar VALUES (1, 1, 'http://localhost/project_api/file/cilliez_nicolas.jpg');
@@ -87,3 +104,14 @@ INSERT INTO competences VALUES (6, 1, 1, 'SQL', 'http://localhost/project_api/fi
 INSERT INTO competences VALUES (7, 1, 1, 'PHP', 'http://localhost/project_api/file/php.png','Développement et traitement des donnée (api)');
 INSERT INTO competences VALUES (8, 1, 1, 'PHP', 'http://localhost/project_api/file/synfony.png','Développement d\'api en synfony avec le bundle api_platform');
 INSERT INTO competences VALUES (9, 1, 1, 'Réseau', 'http://localhost/project_api/file/reseau.png',' Configuration IP');
+
+INSERT INTO parcours VALUES (1, 'Agent polyvalent', '2021-06-01', '2022-10-01', 'LA BOUQINERIE DU SART, Villeneuve-d\'ascq(CDDI).');
+INSERT INTO parcours VALUES (2, 'Agent polyvalent', '2016-01-01', '2018-01-01', 'ASSOCIATION ARTOIS INSERTION RESSOURCERIE, BAPAUME (CDDI).');
+INSERT INTO parcours VALUES (3, 'Lycée Guy Mollet', '2009-01-01', '2012-01-01', 'BTS EN INFORMATIQUE DE GESTION');
+
+INSERT INTO missions VALUES (1, 1, 'Collecte');
+INSERT INTO missions VALUES (2, 1, 'Pr\éparation des commandes vente de livres sur internet.');
+INSERT INTO missions VALUES (3, 2, 'Collecte d\’objets aupr\ès des usagers.');
+INSERT INTO missions VALUES (4, 2, 'R\éparation et mise \à disposition dans les magasins solidaires.');
+INSERT INTO missions VALUES (5, 3, 'Stage (2011): R\éalisation d\’un site internet en 7 semaines pour la soci\ét\é Delcroix \à Bapaume.');
+INSERT INTO missions VALUES (6, 3, 'Stage (2009): R\éalisation d\’une application intranet en 5 semaines pour aider les professeurs d\’\éducation civique du lyc\ée Guy Mollet \à \évaluer leurs \él\èves sur le B2I (2009).');
