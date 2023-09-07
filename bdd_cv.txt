@@ -62,6 +62,8 @@ foreign key (id_categorie) references categories(id)
 CREATE TABLE IF NOT EXISTS `parcours` (
 `id` int(5) NOT NULL AUTO_INCREMENT,
 `titre` text,
+`illustration` text,
+`lien` text,
 `date_debut` date,
 `date_fin` date,
 `description` text,
@@ -105,9 +107,9 @@ INSERT INTO competences VALUES (7, 1, 1, 'PHP', 'http://localhost/project_api/fi
 INSERT INTO competences VALUES (8, 1, 1, 'PHP', 'http://localhost/project_api/file/synfony.png','Développement d\'api en synfony avec le bundle api_platform');
 INSERT INTO competences VALUES (9, 1, 1, 'Réseau', 'http://localhost/project_api/file/reseau.png',' Configuration IP');
 
-INSERT INTO parcours VALUES (1, 'Agent polyvalent', '2021-06-01', '2022-10-01', 'LA BOUQINERIE DU SART, Villeneuve-d\'ascq(CDDI).');
-INSERT INTO parcours VALUES (2, 'Agent polyvalent', '2016-01-01', '2018-01-01', 'ASSOCIATION ARTOIS INSERTION RESSOURCERIE, BAPAUME (CDDI).');
-INSERT INTO parcours VALUES (3, 'Lycée Guy Mollet', '2009-01-01', '2012-01-01', 'BTS EN INFORMATIQUE DE GESTION');
+INSERT INTO parcours VALUES (1, 'Agent polyvalent','http://localhost/project_api/file/bouqinerie-du-sart.png','https://www.bouquineriedusart.com/', '2021-06-01', '2022-10-01', 'LA BOUQINERIE DU SART, Villeneuve-d\'ascq(CDDI).');
+INSERT INTO parcours VALUES (2, 'Agent polyvalent','http://localhost/project_api/file/air.png','https://laressourcerie.eu/le-magasin-bapaume', '2016-01-01', '2018-01-01', 'ASSOCIATION ARTOIS INSERTION RESSOURCERIE, BAPAUME (CDDI).');
+INSERT INTO parcours VALUES (3, 'Lycée Guy Mollet','http://localhost/project_api/file/logo-guy-mollet-arras.jpeg','https://lyceeguymollet.fr/', '2009-01-01', '2012-01-01', 'BTS EN INFORMATIQUE DE GESTION');
 
 INSERT INTO missions VALUES (1, 1, 'Collecte');
 INSERT INTO missions VALUES (2, 1, 'Pr\éparation des commandes vente de livres sur internet.');

@@ -30,7 +30,13 @@
         $page = isset($_GET['page']) ? max(0, intval($_GET['page']) - 1) * $items : 0;
     
         $queryCount = "SELECT COUNT(*) AS total FROM competences";
+        if ($search !== null) {
+            $queryCount .= " WHERE sous_categorie LIKE CONCAT('%', :search, '%') OR details LIKE CONCAT('%', :search, '%')";
+        } 
         $stmtCount = $conn->prepare($queryCount);
+        if ($search !== null) {
+            $stmtCount->bindParam(':search', $search, PDO::PARAM_STR);
+        }
         $stmtCount->execute();
         $totalCount = $stmtCount->fetch(PDO::FETCH_ASSOC)['total'];
         $stmtCount->closeCursor();
